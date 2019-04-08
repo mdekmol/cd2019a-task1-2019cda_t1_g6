@@ -156,12 +156,81 @@
 <p><a href="/downloads/progit_v2.1.0.pdf">Git pdf手冊</a></p>
 <h2>手冊重點</h2>
 <h3>開始</h3>
-<h3>Git基礎</h3>
-<h3>使用Git分支</h3>
+<h4>版本控制系統</h4>
+<p><img alt="" height="683" src="/images/p01.png" width="800"/></p>
+<p>利用RCS指令可控制任一版本資料，其<span>工作原理是在硬碟上保存一堆特殊格式的補丁集合，通過套用功能，便可以重新產生出每個版本的檔案內容。</span></p>
+<p><span>Git控制方法分成</span><span>集中化與分散式版本控制系統</span></p>
+<p><span>集中化版本控制系統</span></p>
+<p><span><img alt="" height="556" src="/images/p02.png" width="800"/></span></p>
+<p>好處：</p>
+<p>1.清楚了解分組內各成員所做進度<br/>2.管理員統一控制所有開發者權限<br/>3.各用戶端統一使用統一版本系統，好管理<br/>壞處：<br/>1.中央伺服器發生故障，各開發者便無法協同合作<br/>2.統一集中資料會有遺失資料風險</p>
+<p>分散式版本控制系統<br/><br/>因集中化控制的不便，進而衍化出分散式控制系統</p>
+<p><img alt="" height="800" src="/images/p03.png" width="668"/><br/>優點：<br/>1.任一協同伺服器故障，事後都能以任一用戶端鏡像還原<br/>2.能與許多遠端倉儲互動，使不同地方群組能在不一樣的地方完成同一專案協同合作<br/>3.階層式的分工合作<br/><br/></p>
+<p>-------------------------------------------------------------------------------------------------------------</p>
+<p><strong>Git完整性</strong></p>
+<p><br/><span>1.Git 中所有的物件在儲存前都會被計算校驗碼（checksum）並以校驗碼參照物件。</span><br/>2.計算較驗碼<span>機制稱為 SHA-1 雜湊演算法。 一個校驗碼是由 40 個 16 進位的字母（0–9 和 a–f）所組成，Git 會根據檔案的內容和資料夾的結構來計算。 <br/>3. Git 的資料庫內，每個檔案都是用其內容的校驗碼來儲存，而不是使用檔名。</span></p>
+<p><strong>Git狀態</strong></p>
+<p>1.已提交（committed）：<br/><span>檔案己安全地存在你的本地端資料庫。</span></p>
+<p>2.<span>已修改（modified）：<br/>檔案已被修改但尚未提交到本地端資料庫。 <br/></span></p>
+<p>3.<span>已預存（staged）：<br/>已預存代表這檔案將會被存到下次你提交的快照中。<br/><br/></span></p>
+<p><span><img alt="" height="441" src="/images/p04.png" width="800"/></span></p>
+<p><strong>Git工作流程</strong></p>
+<p>1.你在你工作目錄修改檔案。</p>
+<p>2.預存檔案，將檔案的快照新增到預存區。</p>
+<p>3.做提交的動作，這會讓存在預存區的檔案快照永久地儲存在 Git 目錄中。</p><h3>Git基礎</h3>
+<p><strong>取得倉儲</strong></p>
+<p>命令格式：<span>git clone [url]<br/>1.<code>https://</code><span><br/>2.git://<br/>3.user@server:path/to/repo.git<br/><br/></span></span></p>
+<p><strong>檢查檔案狀態</strong></p>
+<p><span>命令格式：git status<br/>用來偵測哪些檔案處在什麼樣的狀態下的主要工具</span></p>
+<p><span>使用<code>git status -s</code><span><span> </span>或<span> </span></span><code>git status --short會得到一種較精簡的修改</code><br/><br/><strong>新增檔案</strong></span></p>
+<p><strong></strong>命令格式：<span>git add.<br/>用以追蹤新的檔案、預存檔案使用</span></p>
+<p><strong>提交修改</strong></p>
+<p>命令格式：git commit</p>
+<div class="paragraph">預備提交本次變更使用<br/><br/></div>
+<div class="paragraph"></div>
+<div class="paragraph"><strong>移除檔案</strong></div>
+<div class="paragraph"><strong></strong></div>
+<div class="paragraph">命令格式：<span>git rm</span></div>
+<div class="paragraph"><span>從預存區中移除已追蹤檔案<br/><br/></span></div>
+<div class="paragraph"><span></span></div>
+<div class="paragraph"><strong>變更檔案</strong></div>
+<div class="paragraph"></div>
+<div class="paragraph"></div>
+<div class="paragraph">命令格式：git mv file_from file_to
+<div class="paragraph">於<span> Git 中重新命名一個檔案<br/><br/></span></div>
+</div>
+<div class="paragraph"></div>
+<div class="paragraph"><strong>復原檔案</strong></div>
+<div class="paragraph"><strong></strong></div>
+<div class="paragraph">命令格式：git commit --amend</div>
+<div class="paragraph">復原上一個提交內容<br/><br/></div>
+<div class="paragraph"></div>
+<div class="paragraph"><strong>推送檔案</strong></div>
+<div class="paragraph"></div>
+<div class="paragraph">命令格式：git push</div>
+<div class="paragraph">完成近端內容，推回上游</div>
+<div class="paragraph"></div>
+<div class="paragraph"></div>
+<div class="paragraph"><strong>新增別名</strong></div>
+<div class="paragraph"></div>
+<div class="paragraph">命令格式：git config</div>
+<div class="paragraph"><span>替指令設定別名</span></div>
+<div class="paragraph"><span></span></div>
+<div class="paragraph"><span></span></div>
+<div class="paragraph"><strong>標籤</strong></div>
+<div class="paragraph"></div>
+<div class="paragraph">命令格式：git tag</div>
+<div class="paragraph"><span>用此功能來標出發行版本</span></div>
+<div class="paragraph"><span></span></div>
+<div class="paragraph"><strong>檢視遠端</strong></div>
+<div class="paragraph"><strong></strong></div>
+<div class="paragraph">命令格式：git remote</div>
+<div class="paragraph"><span>檢視已設定的遠端版本庫， 列出每個遠端版本庫的「簡稱」</span></div>
+<div class="paragraph"></div><h3>使用Git分支</h3>
 <h3>伺服器上的Git</h3>
 <h3>分散式的Git</h3>
-<h3><span>GitHub</span></h3>
-<h3><span>Git Tools</span></h3>
+<h3>GitHub</h3>
+<h3>Git Tools</h3>
 <h3>Customizing Git</h3>
 <h3>Git and Other Systems</h3>
 <h3>Git Internals</h3>
