@@ -154,7 +154,8 @@
 <h1>Git手冊</h1>
 <h2>電子書</h2>
 <p><a href="/downloads/progit_v2.1.0.pdf">Git pdf手冊</a></p>
-<h2>手冊重點</h2>
+<p>線上觀看手冊</p>
+<p><a href="https://git-scm.com/book/zh-tw/v2">https://git-scm.com/book/zh-tw/v2</a></p><h2>手冊重點</h2>
 <h3>開始</h3>
 <h4>版本控制系統</h4>
 <p><img alt="" height="683" src="/images/p01.png" width="800"/></p>
@@ -227,8 +228,164 @@
 <div class="paragraph">命令格式：git remote</div>
 <div class="paragraph"><span>檢視已設定的遠端版本庫， 列出每個遠端版本庫的「簡稱」</span></div>
 <div class="paragraph"></div><h3>使用Git分支</h3>
-<h3>伺服器上的Git</h3>
-<h3>分散式的Git</h3>
+<p>用於</p>
+<ol class="arabic">
+<li>
+<p>開發一個網站。</p>
+</li>
+<li>
+<p>建立一個分支以實現一個新故事。</p>
+</li>
+<li>
+<p>在這個分支上進行開發。</p>
+</li>
+</ol>
+<p><span>用於分支（branch）與合併（merge）工作流程</span></p>
+<p><span></span><strong>建立分支</strong></p>
+<p>使用指令：<span>git branch</span></p>
+<p>此會在<span>目前提交上新建一個指標</span></p>
+<p><img alt="" height="331" src="/images/p05.png" width="800"/></p>
+<p><strong>切換分支</strong></p>
+<p></p>
+<p>使用指令：<span>git checkout</span></p>
+<p><span>切換到一個已經存在的分支</span></p>
+<p><span><img alt="" height="460" src="/images/p06.png" width="800"/></span></p>
+<p><strong>分支歷史</strong></p>
+<p></p>
+<p>使用指令：<span>git log</span></p>
+<p><span>查出提交歷史，顯示分支指標所在與歷史如何被分離開來。</span></p>
+<p></p>
+<p></p><h3>伺服器上的Git</h3>
+<p><strong>通訊協定種類：</strong></p>
+<div><strong>Local protocols</strong><br/><span></span></div>
+<p></p>
+<div>
+<p><span>優點：</span></p>
+<p><span>1.可將倉儲副本傳送到各開發者具共享權限的位置，<br/>並同於設置其他共享目錄一樣設置存取、編輯的權限。</span></p>
+<p><span>2.運用git指令</span><span>，使共同開發者更方便推送到遠端，同時也方便存取使用。</span></p>
+<p><span>缺點:</span></p>
+<p><span>1.共享存取通常更難以從多個位置進行設定和存取。</span></p>
+<p><span>2.若使用個人電腦的話，則需安裝遠端系統，否則會連基本網路存取都還要來得困難與慢上許多。</span></p>
+<p><span>3.每個共同編寫者都具有對“遠端”目錄的訪問權限，無法限制或阻擋使用者更改或刪除內部Git文件或破壞遠端倉儲。</span></p>
+<p><strong>SSH通訊協定(<span>Secure Shell</span>)</strong></p>
+<p>優點:</p>
+<p>1.SSH相較容易設置，且保護程式較多。</p>
+<p>2.透過SSH存取資安是安全的，所有數據傳輸都經過加密和身份驗證。</p>
+<p>3.像HTTP/S、Git與Local protocols一樣，讓數據在傳輸前盡量接近。</p>
+<p>缺點:</p>
+<p>1.無法通過它對倉儲進行匿名存取。</p>
+<p>2.如果想允許匿名存取並且仍使用SSH，則需設定SSH以利推送，但其內容可能會被其他人獲取。</p>
+<p><strong>Git協定</strong></p>
+<p>優點:</p>
+<p>1.目前最快的網絡傳輸協議。</p>
+<p>2.若為共同倉儲或為不需身份驗證進行讀取，則需設定Git保護程式。</p>
+<p>3.Git倉儲可供所有人clone。</p>
+<p>缺點:</p>
+<p>1.缺乏身份驗證。</p>
+<p>2.通常為唯一存取權限(即推送、寫入等)，若開啟推送存取權限，則擁有此URL的任何人都可推送到倉儲內。</p>
+<p><strong>HTTP</strong></p>
+<p>可分為兩種，分別為新制與舊制。</p>
+<p>新制:</p>
+<p>與SSH或Git協定的運行方式非常相似，它可以設置為像git://協議一樣匿名服務，也可以通過SSH協議等身份驗證和加密來推送。</p>
+<p>舊制:</p>
+<p>直接將Git倉儲提供設置為來自Web服務器的普通文件。優點於設置的簡單性。但此外，任何皆可訪問倉儲Web服務器的人都可以存取此倉儲。</p>
+<p>以下優缺點於新制HTTP</p>
+<p>優點:</p>
+<p>1.能夠使用用戶名和密碼進行身份驗證。</p>
+<p>2.通過HTTPS以讀取方式提供倉儲。</p>
+<p>缺點:</p>
+<p>與某些服務器上的SSH相比，在HTTP/S上使用Git可能會有點棘手。</p>
+<p><span></span>--------------------------------------------------------------------------------------------</p>
+<p><strong>在伺服器上佈署Git：</strong></p>
+<p><span>要clone倉儲以新增倉儲，使用該--bare選項運行clone命令。將指令尾端輸入.git。</span></p>
+<div>使用指令：<span> git clone --bare my_project my_project.git</span></div>
+<div></div>
+<div>使用後<span>在目錄中會有Git目錄數據的副本my_project.git。</span></div>
+<div><span></span></div>
+<div><span>以下指令等同於上述指令，但文件部分會存在些許細微差別。<br/><br/></span></div>
+<div><span>使用指令：cp -Rf my_project/.git my_project.git</span></div>
+<div><span></span></div>
+<div><span>將倉儲複製到下來設置新的倉儲：<br/><br/></span></div>
+<div><span>假設/srv/git存在於該服務器上，並已設置一個名為git.example.com的SSH服務器，而希望將所有Git存儲庫存儲在該/srv/git目錄下。</span></div>
+<div><span></span></div>
+<div>使用指令：scp -r my_project.git <a href="mailto:user@git.example.com:/srv/git">user@git.example.com:/srv/git</a></div>
+<div></div>
+<div>接著對有這目錄及SSH的權限的用戶便可以clone，也有推送訪問權限。</div>
+<div></div>
+<div>使用指令：<span>git clone user@git.example.com:/srv/git/my_project.git</span></div>
+<div></div>
+<div><span>如果git init使用該--shared選項執行命令，Git將自動將寫入權限正確添加到倉儲。</span></div>
+<div><span></span></div>
+<div><span>使用指令：<br/><br/></span></div>
+<div>ssh <a href="mailto:user@git.example.com">user@git.example.com</a></div>
+<div><br/><span>cd /srv/git/my_project.git</span></div>
+<div><br/><span>git init --bare --shared</span></div>
+<div><span></span></div>
+<div><span>-----------------------------------------------------------------------------------------------------------</span></div>
+<div><strong>個人的SSH公鑰：</strong></div>
+<div><strong></strong></div>
+<div><span>輸入指令後有出現文件為id_dsa(id_rsa)為自己私人的密鑰，而文件後方多了.pub則為公鑰。</span></div>
+<div><span></span></div>
+<div><span><span>如下：<br/></span></span>
+<p><strong>~/.ssh為目錄</strong></p>
+<p> cd ~/.ssh</p>
+<p> ls</p>
+<p>authorized_keys2</p>
+<p>id_dsa</p>
+<p>known_hosts</p>
+<p>config</p>
+<p>id_dsa.pub</p>
+<p>*若無金<span>鑰時，可輸入下列指令來創建。</span></p>
+<p><span>指令：ssh-keygen</span></p>
+<p>接著會需要確保密鑰（.ssh/id_rsa）的位置，需輸入兩次密碼，不需要則可空白。</p>
+<p>如用戶需要複製有公鑰文件的內容，輸入下列指令。<br/><strong>~/.ssh/id_rsa為公鑰位置</strong></p>
+<p>cat ~/.ssh/id_rsa.pub</p>
+<p>-----------------------------------------------------------------------------------------------------</p>
+<p><strong>伺服器的設定：</strong></p>
+<p>如需設定SSH存取的服務端，則需使用下列方式來進行身分驗證。</p>
+<p>&lt;&lt;<span>git為用戶名、 .ssh為目錄、authorized_keys為驗證&gt;&gt;</span></p>
+<p><span>指令：</span></p>
+<p>sudo adduser git</p>
+<p>su git</p>
+<p>cd</p>
+<p>mkdir .ssh &amp;&amp; chmod 700 .ssh</p>
+<p>touch .ssh/authorized_keys &amp;&amp; chmod 600 .ssh/authorized_keys</p>
+<p>如需要新增開發人員的SSH公鑰，並將其保存到臨時文件中。<br/>指令如下:</p>
+<p>&lt;&lt;範例為john為開發人員的SSH公鑰&gt;&gt;</p>
+<p>cat /tmp/id_rsa.john.pub</p>
+<p>在一個沒有工作目錄的情況下設置一個空儲存庫。</p>
+<p>cd /opt/git</p>
+<p>mkdir project.git</p>
+<p>cd project.git</p>
+<p>git init --bare</p>
+<p>將文件推送至遠端倉儲。</p>
+<p>&lt;&lt;myproject為文件&gt;&gt;</p>
+<p>-----------------------------------------------------------------------------------------</p>
+<p>Git常駐程式</p>
+<p>若不想將所有人都新增SSH金鑰時，以維護近端的方式運行下列指令:<br/>*此方法設定方便而快速，但因沒有密鑰的身分驗證，所以任何人都可以存取裡面的內容*</p>
+<p>git daemon --reuseaddr --base-path=/opt/git/ /opt/git/</p>
+<p><strong>--reuseaddr是允許服務器重新啟動而無需等待舊連接超時</strong></p>
+<p><strong>--base-path是允許人們克隆項目而不指定整個路徑</strong></p>
+<p>&gt;&gt;最後的路徑則需宣告Git維護程序在哪查找所要導出的倉儲&lt;&lt;</p>
+<p>若防火牆正執行，還需在正在設置它的資料夾上的檔案9418處打一個洞。<br/>但建議將此維護方法作為擁有倉儲的唯讀權限的用戶使用。</p>
+<p>在Ubuntu計算機上，您可以使用Upstart的腳本，並在文件中放入腳本。</p>
+<p>**文件為/etc/init/local-git-daemon.conf**</p>
+<p>腳本:</p>
+<p>start on startup</p>
+<p>stop on shutdown</p>
+<p>exec /usr/bin/git daemon \</p>
+<p>--user=git --group=git \</p>
+<p>--reuseaddr \</p>
+<p>--base-path=/opt/git/ \</p>
+<p>/opt/git/</p>
+<p>respawn</p>
+<p>要在不重新啟動的情況下運行計算機時</p>
+<p>initctl start local-git-daemon</p>
+<p>允許未驗證的用戶存取指定的倉儲。</p>
+<p>cd /path/to/project.git</p>
+<p>touch git-daemon-export-ok</p>
+</div>
+</div><h3>分散式的Git</h3>
 <h3>GitHub</h3>
 <h3>Git Tools</h3>
 <h3>Customizing Git</h3>
