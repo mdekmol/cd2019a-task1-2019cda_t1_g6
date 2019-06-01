@@ -28,7 +28,8 @@
 <p><span>第十五週&gt;討論各人員分配製作內容</span></p>
 <p><span>第十六週&gt;製作所負責之任務</span></p>
 <p><span>第十七週&gt;整合各組所作之內容、校閱內文</span></p>
-<p></p><h2>手足球系統模擬</h2>
+<p></p>
+<h2>手足球系統模擬</h2>
 <h4>專案成果摘要</h4>
 <h4>專案執行動機</h4>
 <h4>相關文獻探討</h4>
@@ -68,6 +69,7 @@
 <p>def a1():<br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,lmo_handle,20,vrep.simx_opmode_oneshot_wait)<br/>def d1(): <br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,lmo_handle,-20,vrep.simx_opmode_oneshot_wait)<br/>def w1(): <br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,lrev_handle,B_KickBallVel,vrep.simx_opmode_oneshot_wait)<br/>def s1():<br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,lrev_handle,R_KickBallVel,vrep.simx_opmode_oneshot_wait)<br/>def j2():<br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,rmo_handle,-1.5,vrep.simx_opmode_oneshot_wait)<br/>def l2(): <br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,rmo_handle,1.5,vrep.simx_opmode_oneshot_wait)<br/>def i2(): <br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,rrev_handle,R_KickBallVel,vrep.simx_opmode_oneshot_wait)<br/>def k2():<br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,rrev_handle,B_KickBallVel,vrep.simx_opmode_oneshot_wait)<br/>#定義平移軸及旋轉軸的速度</p>
 <p><br/>vrep.simxStartSimulation(clientID,vrep.simx_opmode_oneshot_wait)<br/>#開始</p>
 <p>while True:<br/> try:<br/> if keyboard.is_pressed('a'):<br/> a1()<br/> elif keyboard.is_pressed('d'):<br/> d1()<br/> elif keyboard.is_pressed('w'):<br/> w1()<br/> elif keyboard.is_pressed('s'): <br/> s1()<br/> elif keyboard.is_pressed('4'): <br/> j2()<br/> elif keyboard.is_pressed('6'):<br/> l2()<br/> elif keyboard.is_pressed('8'):<br/> i2()<br/> elif keyboard.is_pressed('5'): <br/> k2()<br/> else:<br/> pass<br/> except:<br/> break<br/>#執行按鍵</p>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/HMxE2W__NSw" width="560"></iframe></p>
 <h2>送球機構每週進度</h2>
 <p><strong>W12軌道設計</strong></p>
 <p>軌道1</p>
@@ -85,7 +87,8 @@
 <p><span><img alt="" height="411" src="/images/chrome_M8EG7a5PHw.png" width="413"/></span></p>
 <p><strong>W14收球底版</strong></p>
 <p><img alt="" height="359" src="/images/chrome_Ov8YmtLass.png" width="596"/></p>
-<p></p><h3>每週進度問題討論</h3>
+<p></p>
+<h3>每週進度問題討論</h3>
 <p>W13</p>
 <p>上網找尋該機構相關資料</p>
 <p>討論繪製<span>送球機構雛形</span></p>
@@ -102,11 +105,12 @@
 <p>在軌道末端處本要接上送球機構上去，但因送球機構會與球桿位置造成干涉，所以後續組員討論後決議改變軌道與送球機構台位置。</p>
 <p>可能利用架高軌道解決與球檯與球桿干涉問題</p>
 <p>如下圖：</p>
-<p><img alt="" height="457" src="/images/chrome_nsf5ZiuHat.png" width="824"/></p><h2>送球機構設計與模擬</h2>
+<p><img alt="" height="457" src="/images/chrome_nsf5ZiuHat.png" width="824"/></p>
+<h2>送球機構設計與模擬</h2>
 <h2>系統功能展示</h2>
-<p>自動回擊</p>
+<h3>手足球自動回擊</h3>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/gjz6wJoysU0" width="560"></iframe></p>
-<p>鍵盤控制球員</p>
+<h3>Lua鍵盤控制球員</h3>
 <p></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/aPPbrZm339c" width="560"></iframe></p>
 <h4><a href="https://github.com/mdekmol/cd2019a-task1-2019cda_t1_g6/blob/gh-pages/vrep/football_w11.ttt">檔案下載</a></h4>
