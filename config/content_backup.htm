@@ -57,11 +57,20 @@
 <p>球員</p>
 <p><img alt="" height="730" src="/images/7.png" width="733"/></p>
 <p>由於原本球員形狀過於複雜導致模擬不順</p>
-<p>替換為以下形狀</p>
+<p>替換為以下形狀(此形狀用以模擬時使用)</p>
 <p><img alt="" height="658" src="/images/8.png" width="704"/></p>
 <p><img alt="" height="694" src="/images/9.png" width="1289"/></p>
-<h2>細部設計與 BOM</h2>
-<h1>V-rep 動態模擬</h1>
+<p>送球軌道：</p>
+<p><img alt="" height="554" src="/images/chrome_libhnKLYZX.png" width="640"/></p>
+<p><img alt="" height="519" src="/images/chrome_Ov8YmtLass.png" width="862"/></p>
+<p><img alt="" height="529" src="/images/chrome_vdVb5kWrD0.png" width="544"/></p>
+<p><img alt="" height="453" src="/images/chrome_pcMNRDk4NQ.png" width="1043"/></p>
+<p></p><h2>細部設計與 BOM</h2>
+<p>送球機構：</p>
+<p><img alt="" height="532" src="/images/chrome_N3lCVKR99I.png" width="639"/></p>
+<p>機構內部旋轉機構設計：</p>
+<p><img alt="" height="638" src="/images/chrome_wNrl2j4oDy.png" width="782"/></p>
+<p></p><h1>V-rep 動態模擬</h1>
 <p>鍵盤雙人對打程式</p>
 <p>import vrep<br/>import sys, math<br/>import keyboard <br/>#導入鍵盤<br/># child threaded script: <br/># 內建使用 port 19997 若要加入其他 port, 在 serve 端程式納入<br/>#simExtRemoteApiStart(19999)<br/> <br/>vrep.simxFinish(-1)<br/> <br/>clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)<br/>if clientID!= -1:<br/> print("Connected to remote server")<br/>else:<br/> print('Connection not successful')<br/> sys.exit('Could not connect')</p>
 <p>KickBallV = 360 <br/>R_KickBallVel = (math.pi/180)*KickBallV<br/>B_KickBallVel = -(math.pi/180)*KickBallV</p>
@@ -106,7 +115,20 @@
 <p>可能利用架高軌道解決與球檯與球桿干涉問題</p>
 <p>如下圖：</p>
 <p><img alt="" height="457" src="/images/chrome_nsf5ZiuHat.png" width="824"/></p>
-<h2>送球機構設計與模擬</h2>
+<p>W16</p>
+<p>在改良送球機構運行部分，組員做了架高處理，並利用機構特性達到帶動運轉的特性</p>
+<p>用以達到此流程：</p>
+<p>球得分入袋&gt;機構迴轉帶動使其位置能達到變化&gt;送回球場上繼續對打&gt;循環進入對打系統。</p>
+<p>架高處理：</p>
+<p><img alt="" height="531" src="/images/chrome_6HWBG1i6wS.png" width="821"/></p>
+<p>送球機構組合架構：</p>
+<p><img alt="" height="595" src="/images/chrome_LFTctFSfg2.png" width="818"/></p><h2>送球機構設計與模擬</h2>
+<p>機構主體</p>
+<p><img alt="" height="706" src="/images/chrome_lYC5p9jpuL.png" width="728"/></p>
+<p>內部旋轉軸</p>
+<p><img alt="" height="757" src="/images/chrome_wNrl2j4oDy.png" width="928"/></p>
+<p>組合圖</p>
+<p><img alt="" height="685" src="/images/chrome_N3lCVKR99I.png" width="824"/></p>
 <h2>系統功能展示</h2>
 <h3>手足球自動回擊</h3>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/gjz6wJoysU0" width="560"></iframe></p>
