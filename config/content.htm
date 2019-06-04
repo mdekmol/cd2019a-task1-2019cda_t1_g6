@@ -83,14 +83,65 @@
 <p></p>
 <h1>V-rep 動態模擬</h1>
 <p>鍵盤雙人對打程式</p>
-<p>import vrep<br/>import sys, math<br/>import keyboard <br/>#導入鍵盤<br/># child threaded script: <br/># 內建使用 port 19997 若要加入其他 port, 在 serve 端程式納入<br/>#simExtRemoteApiStart(19999)<br/> <br/>vrep.simxFinish(-1)<br/> <br/>clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)<br/>if clientID!= -1:<br/> print("Connected to remote server")<br/>else:<br/> print('Connection not successful')<br/> sys.exit('Could not connect')</p>
-<p>KickBallV = 360 <br/>R_KickBallVel = (math.pi/180)*KickBallV<br/>B_KickBallVel = -(math.pi/180)*KickBallV</p>
-<p>errorCode,lrev_handle=vrep.simxGetObjectHandle(clientID,'lrev',vrep.simx_opmode_oneshot_wait)<br/>errorCode,lmo_handle=vrep.simxGetObjectHandle(clientID,'lmo',vrep.simx_opmode_oneshot_wait)<br/>errorCode,rrev_handle=vrep.simxGetObjectHandle(clientID,'rrev',vrep.simx_opmode_oneshot_wait)<br/>errorCode,rmo_handle=vrep.simxGetObjectHandle(clientID,'rmo',vrep.simx_opmode_oneshot_wait)<br/>#定義平移軸旋轉軸</p>
-<p>def a1():<br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,lmo_handle,20,vrep.simx_opmode_oneshot_wait)<br/>def d1(): <br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,lmo_handle,-20,vrep.simx_opmode_oneshot_wait)<br/>def w1(): <br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,lrev_handle,B_KickBallVel,vrep.simx_opmode_oneshot_wait)<br/>def s1():<br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,lrev_handle,R_KickBallVel,vrep.simx_opmode_oneshot_wait)<br/>def j2():<br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,rmo_handle,-1.5,vrep.simx_opmode_oneshot_wait)<br/>def l2(): <br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,rmo_handle,1.5,vrep.simx_opmode_oneshot_wait)<br/>def i2(): <br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,rrev_handle,R_KickBallVel,vrep.simx_opmode_oneshot_wait)<br/>def k2():<br/> errorCode=vrep.simxSetJointTargetVelocity(clientID,rrev_handle,B_KickBallVel,vrep.simx_opmode_oneshot_wait)<br/>#定義平移軸及旋轉軸的速度</p>
-<p><br/>vrep.simxStartSimulation(clientID,vrep.simx_opmode_oneshot_wait)<br/>#開始</p>
-<p>while True:<br/> try:<br/> if keyboard.is_pressed('a'):<br/> a1()<br/> elif keyboard.is_pressed('d'):<br/> d1()<br/> elif keyboard.is_pressed('w'):<br/> w1()<br/> elif keyboard.is_pressed('s'): <br/> s1()<br/> elif keyboard.is_pressed('4'): <br/> j2()<br/> elif keyboard.is_pressed('6'):<br/> l2()<br/> elif keyboard.is_pressed('8'):<br/> i2()<br/> elif keyboard.is_pressed('5'): <br/> k2()<br/> else:<br/> pass<br/> except:<br/> break<br/>#執行按鍵</p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/HMxE2W__NSw" width="560"></iframe></p>
-<h2>送球機構每週進度</h2>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import vrep
+import sys, math
+import keyboard
+# child threaded script: 
+# 內建使用 port 19997 若要加入其他 port, 在  serve 端程式納入
+#simExtRemoteApiStart(19999)
+  
+vrep.simxFinish(-1)
+  
+clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)
+KickBallV = 360  
+n=1
+U_KickBallVel = (math.pi/180)*KickBallV
+D_KickBallVel = -(math.pi/180)*KickBallV
+if clientID!= -1:
+    print("Connected to remote server")
+else:
+    print('Connection not successful')
+    sys.exit('Could not connect')
+
+errorCode,Sphere_handle=vrep.simxGetObjectHandle(clientID,'Sphere',vrep.simx_opmode_oneshot_wait)
+errorCode,lmov_handle=vrep.simxGetObjectHandle(clientID,'lmov', vrep.simx_opmode_oneshot_wait)
+errorCode,rmov_handle=vrep.simxGetObjectHandle(clientID,'rmov',vrep.simx_opmode_oneshot_wait)
+errorCode,lrev_handle=vrep.simxGetObjectHandle(clientID,'lrev',vrep.simx_opmode_oneshot_wait)
+errorCode,rrev_handle=vrep.simxGetObjectHandle(clientID,'rrev',vrep.simx_opmode_oneshot_wait)
+
+
+vrep.simxSetJointTargetVelocity(clientID,lmov_handle,0,vrep.simx_opmode_oneshot_wait)
+vrep.simxSetJointTargetVelocity(clientID,rmov_handle,0,vrep.simx_opmode_oneshot_wait)
+vrep.simxSetJointTargetVelocity(clientID,lrev_handle,0,vrep.simx_opmode_oneshot_wait)
+vrep.simxSetJointTargetVelocity(clientID,rrev_handle,0,vrep.simx_opmode_oneshot_wait)
+
+vrep.simxStartSimulation(clientID,vrep.simx_opmode_oneshot_wait)
+#vrep.simxSetJointTargetVelocity(clientID,P1_handle,5,vrep.simx_opmode_oneshot_wait)
+while True:
+    try:
+            if keyboard.is_pressed('s'): 
+                vrep.simxSetJointTargetVelocity(clientID,lrev_handle,U_KickBallVel ,vrep.simx_opmode_oneshot_wait)
+            elif keyboard.is_pressed('w'):  
+                vrep.simxSetJointTargetVelocity(clientID,lrev_handle,D_KickBallVel ,vrep.simx_opmode_oneshot_wait)
+            if keyboard.is_pressed('a'):  
+                vrep.simxSetJointTargetVelocity(clientID,lmov_handle,-0.5,vrep.simx_opmode_oneshot_wait)
+            elif keyboard.is_pressed('d'):  
+                vrep.simxSetJointTargetVelocity(clientID,lmov_handle,0.5,vrep.simx_opmode_oneshot_wait)
+            else:
+                vrep.simxSetJointTargetVelocity(clientID,lmov_handle,0,vrep.simx_opmode_oneshot_wait)
+            if keyboard.is_pressed('8'):  
+                vrep.simxSetJointTargetVelocity(clientID,rrev_handle,U_KickBallVel ,vrep.simx_opmode_oneshot_wait)
+            elif keyboard.is_pressed('5'):  
+                vrep.simxSetJointTargetVelocity(clientID,rrev_handle,D_KickBallVel ,vrep.simx_opmode_oneshot_wait)
+            if keyboard.is_pressed('4'):  
+                vrep.simxSetJointTargetVelocity(clientID,rmov_handle,-0.5,vrep.simx_opmode_oneshot_wait)
+            elif keyboard.is_pressed('6'):  
+                vrep.simxSetJointTargetVelocity(clientID,rmov_handle,0.5,vrep.simx_opmode_oneshot_wait)
+            else:
+                 vrep.simxSetJointTargetVelocity(clientID,rmov_handle,0,vrep.simx_opmode_oneshot_wait)   
+    except:
+            break</pre>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/HMxE2W__NSw" width="560"></iframe></p><h2>送球機構每週進度</h2>
 <p><strong>W12軌道設計</strong></p>
 <p>軌道1</p>
 <p><img alt="" height="549" src="/images/chrome_libhnKLYZX.png" width="634"/></p>
