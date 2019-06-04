@@ -40,22 +40,26 @@
 <h4>專案結論</h4>
 <h1>設計與繪圖</h1>
 <h2>零組件尺寸分析</h2>
+<p>零件1. <br/><a href="https://cad.onshape.com/documents/ebacb04e08b85ff6021efc57/w/db704115cbe56e5300e02567/e/7f5c211fe41fc4d1504150bd">https://cad.onshape.com/documents/ebacb04e08b85ff6021efc57/w/db704115cbe56e5300e02567/e/7f5c211fe41fc4d1504150bd</a></p>
+<p></p>
+<p>零件2. 3. 4.<br/><a href="https://cad.onshape.com/documents/ebacb04e08b85ff6021efc57/w/db704115cbe56e5300e02567/e/97fdd5108662b99be56c9e32">https://cad.onshape.com/documents/ebacb04e08b85ff6021efc57/w/db704115cbe56e5300e02567/e/97fdd5108662b99be56c9e32</a></p>
+<p></p>
+<p>零件5. 6.<br/><a href="https://cad.onshape.com/documents/ebacb04e08b85ff6021efc57/w/db704115cbe56e5300e02567/e/85a379f5f304d1a1612e182f">https://cad.onshape.com/documents/ebacb04e08b85ff6021efc57/w/db704115cbe56e5300e02567/e/85a379f5f304d1a1612e182f</a></p>
 <h2>參數設計與繪圖</h2>
 <p>Onshape繪製手足球零件</p>
 <p>球檯</p>
-<p><img alt="" height="767" src="/images/10.png" width="1568"/></p>
+<p></p>
 <p>桿子固定器</p>
-<p><img alt="" height="744" src="/images/未命名.png" width="744"/></p>
-<p>放球口</p>
-<p><img alt="" height="730" src="/images/11.png" width="744"/></p>
+<p></p>
+<p></p>
 <p>桿子</p>
-<p><img alt="" height="607" src="/images/4.png" width="1630"/></p>
+<p></p>
 <p>把手</p>
-<p><img alt="" height="739" src="/images/5.png" width="765"/></p>
+<p></p>
 <p>球門</p>
 <p><img alt="" height="728" src="/images/12.png" width="827"/></p>
 <p>球員</p>
-<p><img alt="" height="730" src="/images/7.png" width="733"/></p>
+<p></p>
 <p>由於原本球員形狀過於複雜導致模擬不順</p>
 <p>替換為以下形狀(此形狀用以模擬時使用)</p>
 <p><img alt="" height="658" src="/images/8.png" width="704"/></p>
@@ -65,12 +69,14 @@
 <p><img alt="" height="519" src="/images/chrome_Ov8YmtLass.png" width="862"/></p>
 <p><img alt="" height="529" src="/images/chrome_vdVb5kWrD0.png" width="544"/></p>
 <p><img alt="" height="453" src="/images/chrome_pcMNRDk4NQ.png" width="1043"/></p>
-<p></p><h2>細部設計與 BOM</h2>
+<p></p>
+<h2>細部設計與 BOM</h2>
 <p>送球機構：</p>
 <p><img alt="" height="532" src="/images/chrome_N3lCVKR99I.png" width="639"/></p>
 <p>機構內部旋轉機構設計：</p>
 <p><img alt="" height="638" src="/images/chrome_wNrl2j4oDy.png" width="782"/></p>
-<p></p><h1>V-rep 動態模擬</h1>
+<p></p>
+<h1>V-rep 動態模擬</h1>
 <p>鍵盤雙人對打程式</p>
 <p>import vrep<br/>import sys, math<br/>import keyboard <br/>#導入鍵盤<br/># child threaded script: <br/># 內建使用 port 19997 若要加入其他 port, 在 serve 端程式納入<br/>#simExtRemoteApiStart(19999)<br/> <br/>vrep.simxFinish(-1)<br/> <br/>clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)<br/>if clientID!= -1:<br/> print("Connected to remote server")<br/>else:<br/> print('Connection not successful')<br/> sys.exit('Could not connect')</p>
 <p>KickBallV = 360 <br/>R_KickBallVel = (math.pi/180)*KickBallV<br/>B_KickBallVel = -(math.pi/180)*KickBallV</p>
@@ -97,7 +103,8 @@
 <p><strong>W14收球底版</strong></p>
 <p><img alt="" height="359" src="/images/chrome_Ov8YmtLass.png" width="596"/></p>
 <p><strong>W15機構組合</strong></p>
-<p><img alt="" height="606" src="/images/chrome_xZOEP0vENS.png" width="622"/></p><h3>每週進度問題討論</h3>
+<p><img alt="" height="606" src="/images/chrome_xZOEP0vENS.png" width="622"/></p>
+<h3>每週進度問題討論</h3>
 <p>W13</p>
 <p>上網找尋該機構相關資料</p>
 <p>討論繪製<span>送球機構雛形</span></p>
@@ -125,10 +132,17 @@
 <p>球得分入袋&gt;機構迴轉帶動使其位置能達到變化&gt;送回球場上繼續對打&gt;循環進入對打系統。</p>
 <p>架高處理：</p>
 <p><img alt="" height="531" src="/images/chrome_6HWBG1i6wS.png" width="821"/></p>
+<p>送球機構內轉軸原先設計</p>
+<p><img alt="" height="402" src="/images/ApplicationFrameHost_s5Xefr8RYP.png" width="567"/></p>
+<p><img alt="" height="437" src="/images/ApplicationFrameHost_nZbeZRw4jS.png" width="454"/></p>
+<p>由於圓頭的設計會導致在機構內產生空隙讓球在裡面空轉</p>
+<p>改良成方形扁頭並在兩側加厚讓轉頭產生一個空間讓球能順利帶上來</p>
+<p><img alt="" height="698" src="/images/chrome_12GMpu7kFL.png" width="744"/></p>
 <p>送球機構組合架構：</p>
 <p><img alt="" height="595" src="/images/chrome_LFTctFSfg2.png" width="818"/></p>
 <p>繪製出送球機構與手足球台組合圖，繪製部分已解決問題</p>
-<p><img alt="" height="615" src="/images/chrome_cxwCGaaGZ6.png" width="794"/></p><h2>送球機構設計與模擬</h2>
+<p><img alt="" height="615" src="/images/chrome_cxwCGaaGZ6.png" width="794"/></p>
+<h2>送球機構設計與模擬</h2>
 <p>機構主體</p>
 <p><img alt="" height="706" src="/images/chrome_lYC5p9jpuL.png" width="728"/></p>
 <p>內部旋轉軸</p>
@@ -136,7 +150,8 @@
 <p>組合圖</p>
 <p><img alt="" height="685" src="/images/chrome_N3lCVKR99I.png" width="824"/></p>
 <p>送球機構模擬</p>
-<p><iframe allowfullscreen="allowfullscreen" height="500" src="//www.youtube.com/embed/j3-hlbmgM8g" width="600"></iframe></p><h2>系統功能展示</h2>
+<p><iframe allowfullscreen="allowfullscreen" height="500" src="//www.youtube.com/embed/j3-hlbmgM8g" width="600"></iframe></p>
+<h2>系統功能展示</h2>
 <h3>手足球自動回擊</h3>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/gjz6wJoysU0" width="560"></iframe></p>
 <h3>Lua鍵盤控制球員</h3>
