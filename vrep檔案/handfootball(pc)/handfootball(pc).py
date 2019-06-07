@@ -8,7 +8,7 @@ import keyboard
 vrep.simxFinish(-1)
   
 clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)
-KickBallV = 360  
+KickBallV = 90 
 n=1
 U_KickBallVel = (math.pi/180)*KickBallV
 D_KickBallVel = -(math.pi/180)*KickBallV
@@ -62,5 +62,5 @@ while True:
                 pass
         except:
                 break
-        Mv = BB*2.3
+        Mv = BB*1
         vrep.simxSetJointTargetVelocity(clientID,lmov_handle,Mv,vrep.simx_opmode_oneshot_wait)
