@@ -8,7 +8,7 @@ import keyboard
 vrep.simxFinish(-1)
   
 clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)
-KickBallV = 360  
+KickBallV = 360
 n=1
 U_KickBallVel = (math.pi/180)*KickBallV
 D_KickBallVel = -(math.pi/180)*KickBallV
@@ -39,21 +39,21 @@ while True:
             elif keyboard.is_pressed('x'):  
                 vrep.simxSetJointTargetVelocity(clientID,lrev_handle,D_KickBallVel ,vrep.simx_opmode_oneshot_wait)
             elif keyboard.is_pressed('a'):  
-                vrep.simxSetJointTargetVelocity(clientID,lmov_handle,-1,vrep.simx_opmode_oneshot_wait)
+                vrep.simxSetJointTargetVelocity(clientID,lmov_handle,-0.2,vrep.simx_opmode_oneshot_wait)
             elif keyboard.is_pressed('s'):  
                 vrep.simxSetJointTargetVelocity(clientID,lmov_handle,0,vrep.simx_opmode_oneshot_wait)
             elif keyboard.is_pressed('d'):  
-                vrep.simxSetJointTargetVelocity(clientID,lmov_handle,1,vrep.simx_opmode_oneshot_wait)
+                vrep.simxSetJointTargetVelocity(clientID,lmov_handle,0.2,vrep.simx_opmode_oneshot_wait)
             elif keyboard.is_pressed('5'):  
                 vrep.simxSetJointTargetVelocity(clientID,rrev_handle,U_KickBallVel ,vrep.simx_opmode_oneshot_wait)
             elif keyboard.is_pressed('0'):  
                 vrep.simxSetJointTargetVelocity(clientID,rrev_handle,D_KickBallVel ,vrep.simx_opmode_oneshot_wait)
             elif keyboard.is_pressed('3'):  
-                vrep.simxSetJointTargetVelocity(clientID,rmov_handle,-1,vrep.simx_opmode_oneshot_wait)
+                vrep.simxSetJointTargetVelocity(clientID,rmov_handle,-0.2,vrep.simx_opmode_oneshot_wait)
             elif keyboard.is_pressed('2'):  
                 vrep.simxSetJointTargetVelocity(clientID,rmov_handle,0,vrep.simx_opmode_oneshot_wait)
             elif keyboard.is_pressed('1'):  
-                vrep.simxSetJointTargetVelocity(clientID,rmov_handle,1,vrep.simx_opmode_oneshot_wait)
+                vrep.simxSetJointTargetVelocity(clientID,rmov_handle,0.2,vrep.simx_opmode_oneshot_wait)
             else:
                 pass
     except:
